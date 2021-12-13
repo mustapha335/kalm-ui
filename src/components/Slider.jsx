@@ -49,25 +49,26 @@ const Slide = styled.div`
 
 const ImgContainer = styled.div`
   height: 100%;
-  flex: 1;
 `;
 
 const Image = styled.img`
-  height: 80%;
+  height: 100%;
+  width: 100%;
+  object: cover;
 `;
 
 const InfoContainer = styled.div`
-  flex: 1;
   padding: 50px;
 `;
 
 const Title = styled.h1`
   font-size: 70px;
+  color: white;
 `;
 
-const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 20px;
+const Desc = styled.h1`
+  margin: 80px 0px;
+  font-size: 75px;
   font-weight: 500;
   letter-spacing: 3px;
 `;
@@ -103,7 +104,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              {/* <Button>SHOW NOW</Button> */}
             </InfoContainer>
           </Slide>
         ))}

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -39,16 +40,27 @@ const Button = styled.button`
   color: gray;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.1);
+
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    transform: scale(1);
+  }
 `;
 
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
-      </Info>
+      <Link to={`/products/${item.cat}`}>
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>SHOP NOW</Button>
+        </Info>
+      </Link>
     </Container>
   );
 };
