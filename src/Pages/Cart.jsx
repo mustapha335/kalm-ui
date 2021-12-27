@@ -167,6 +167,7 @@ const Cart = () => {
   const [entCart, setEntCart] = useState({ cart: cart });
   //set a state that would contain the whole cart
   const history = useHistory();
+  // const [quantity, setQuantity] = useState(1);
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -183,8 +184,18 @@ const Cart = () => {
         //set a state back to null or empty array
       } catch (error) {}
     };
+    
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history]);
+
+  // const handleQuantity = (type) => {
+  //   if (type === "dec") {
+  //     quantity > 1 && setQuantity(quantity - 1);
+  //   } else {
+  //     setQuantity(quantity + 1);
+  //   }
+  // };
+
   return (
     <Container>
       <NavBar />
@@ -213,16 +224,22 @@ const Cart = () => {
                       <b>ID:</b> {product._id}
                     </ProductId>
                     <ProductColor color={product.color} />
-                    <ProductSize>
+                    {/* <ProductSize>
                       <b>Size:</b> {product.size}
-                    </ProductSize>
+                    </ProductSize> */}
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
+                    QTY:
+                    {/* <Add 
+                     // setQuantity(quantity+1)
+                     // dispatch(addProduct({ ...product, quantity, color, size }))
+                      
+                      onClick={() => product.quantity+1}
+                      /> */}
                     <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove />
+                    {/* <Remove onClick={() => handleQuantity("dec")}/> */}
                   </ProductAmountContainer>
                   <ProductPrice>
                     £ {product.price * product.quantity}
@@ -230,6 +247,7 @@ const Cart = () => {
                 </PriceDetail>
               </Product>
             ))}
+           { console.log(cart.products)}
             <Hr />
           </Info>
           <Summary>
